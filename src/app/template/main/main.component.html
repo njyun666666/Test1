@@ -1,0 +1,45 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+
+  <mat-toolbar color="primary" class="example-toolbar mat-toolbar mat-primary mat-toolbar-single-row">
+    <button mat-button (click)="snav.toggle()" [style.width.px]="mobileQuery.matches ? 54 : 64" class="sidenavBtn"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">main template</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container mat-drawer-container mat-sidenav-container mat-drawer-transition mat-drawer-container-has-open" [style.marginTop.px]="mobileQuery.matches ? 54 :0">
+ 
+
+    <!--左邊選單 [opened]="mobileQuery.matches ? false : true"-->
+    <mat-sidenav #snav [opened]="false" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="true" [fixedTopGap]="mobileQuery.matches ? 54 : 64" fixedBottomGap="0">
+      <mat-nav-list>
+
+
+        <div *ngFor="let nav of menuLv1">
+
+          <a mat-list-item>{{nav.funcName}}</a>
+
+          <mat-list *ngFor="let nav2 of getMenuLv2(nav.funcID)">
+            <a mat-list-item [routerLink]="nav2.url">{{nav2.funcName}}</a>
+          </mat-list>
+
+        </div>
+
+
+
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <!--右邊選單 position="end"-->
+    <!--內容-->
+    <mat-sidenav-content class="mat-drawer-content mat-sidenav-content ">
+
+
+      <div [@routeAnimations]="prepareRoute(outlet)">
+        <router-outlet #outlet="outlet"></router-outlet>
+      </div>
+
+
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</div>
+

@@ -1,0 +1,58 @@
+
+<div class="container ">
+
+  <p>login-form works!</p>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+
+
+    <div class="row">
+      <div class="col text-center">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Account</mat-label>
+          <input matInput placeholder="" formControlName="Account" trim autofocus/>
+          <mat-error *ngIf="form.get('Account').hasError('required')">
+            Account is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col text-center">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="" formControlName="Password" trim />
+          <mat-error *ngIf="form.get('Password').hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+    </div>
+
+
+
+    <div class="row my-3">
+      <div class="col text-center">
+        <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid || isSubmit">
+          Login
+        </button>
+        <br />
+        form.valid={{form.valid}}
+        <br />
+        isSubmit={{isSubmit}}
+        <br /><br />
+        cookieValue={{cookieValue}}
+        <br /><br />
+        cookieAUTH={{cookieAUTH}}
+      </div>
+    </div>
+
+
+  </form>
+</div>

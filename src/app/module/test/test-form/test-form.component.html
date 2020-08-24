@@ -1,0 +1,98 @@
+
+
+<h1>test-form</h1>
+
+<a href="javascript:history.back();" mat-raised-button color="primary"> back</a>
+
+
+
+<form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+
+
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-12 my-3">
+        <mat-form-field class="">
+          <input matInput placeholder="ID" formControlName="id" trim>
+          <mat-error *ngIf="testForm.get('name').hasError('required') || testForm.get('id').hasError('minlength')">
+            id min length 4 words
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 my-3">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" formControlName="name" trim />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+
+          <mat-error *ngIf="testForm.get('name').hasError('required')">
+            name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+
+      </div>
+
+      <div class="col-12 my-3">
+
+        <mat-form-field>
+          <input matInput [ngxMatDatetimePicker]="picker2" placeholder="Choose a date" formControlName="date">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <ngx-mat-datetime-picker #picker2></ngx-mat-datetime-picker>
+        </mat-form-field>
+
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button type="submit" mat-raised-button color="primary" [disabled]="!testForm.valid || isSubmit">
+          submit
+        </button>
+        <br />
+        testForm.valid={{testForm.valid}}
+        <br />
+        isSubmit={{isSubmit}}
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <br />
+
+  <!--<button type="button" mat-raised-button color="Basic" (click)="getError()">
+    getError
+  </button>-->
+
+
+  <br />
+
+
+
+  <br />
+
+
+
+  <br /><br />
+
+
+
+
+</form>
+
+
+
+<br /><br />
+
+<!--<button mat-raised-button color="Basic" (click)="test()">
+  <mat-icon color="primary">loop</mat-icon> reload parent component list
+</button>-->

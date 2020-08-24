@@ -1,0 +1,7 @@
+<p>open-close works!</p>
+
+<button type="button" mat-raised-button color="primary" (click)="toggle()"> {{ isOpen ? 'Closed' : 'Open' }}</button>
+
+<div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container" (click)="toggle()">
+  <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>
+</div>
